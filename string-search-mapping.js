@@ -25,5 +25,5 @@ function isValid(s) {
   return valid
 }
 
-console.log(isValid('{[]}'))
+console.log(isValid('{[](){}}'))
 console.log(isValid('{[}'))
