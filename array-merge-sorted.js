@@ -28,7 +28,7 @@ function mergeSortedArray(nums1, nums2) {
   }
   return nums1
 }
-console.log(mergeSortedArray([1, 2, 3, 0, 0, 0], [2, 5, 6]))
+// console.log(mergeSortedArray([1, 2, 3, 0, 0, 0], [2, 5, 6]))
 
 // merge sort: create a new array
 function mergeSort(nums1, nums2) {
@@ -52,4 +52,4 @@ function mergeSort(nums1, nums2) {
   }
   return ret
 }
-// console.log(mergeSort([1, 2, 3], [2, 5, 6]))
+console.log(mergeSort([1, 2, 3], [2, 5, 6]))
