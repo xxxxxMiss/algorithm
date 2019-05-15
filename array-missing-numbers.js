@@ -12,28 +12,23 @@
 输出:
 [5,6] */
 
-// [1, 1] => [2]
-// [1, 2] => []
-// TODO: WTF?
+// 思路：对于这些全部为正整数的元素，可以考虑将这些元素作为数组的下标然后做文章
+// 本题在原数组上通过为每个元素加上一个数组长度，虽然改变了原始了，
+// 因为后面的遍历还要用到原始值，在通过对每个元素取余得到原始值。
+// 从而满足题目中的“不使用额外空间且时间复杂度为O(n)”
 function findDisappearedNumbers(nums) {
   const ret = []
-  let len = nums.length
-  if (!len) return ret
-
-  for (let i = 0; i < len; i++) {
-    const val = nums[i]
-    if (!nums[val + len]) nums[val + len] = 0
-    nums[val + len]++
+  const n = nums.length
+  // 通过加上数组长度可以标记元素出现过。求余数数据即可知道原先数字的大小。
+  for (let i = 0; i < nums.length; i++) {
+    // 得到原始值
+    const remainder = (nums[i] - 1) % n
+    // 改变原始值
+    nums[remainder] += n
   }
-  let j = len
-  for (; j < nums.length; j++) {
-    if (!nums[j] && j - len != 0) {
-      ret.push(j - len)
-    }
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] <= n) ret.push(i + 1)
   }
-  // if (j - len - 1 != len) {
-  //   ret.push(len)
-  // }
   return ret
 }
-console.log(findDisappearedNumbers([1, 1, 2, 2]))
+console.log(findDisappearedNumbers([1, 1]))
