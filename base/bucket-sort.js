@@ -1,7 +1,7 @@
 // 8 5 2 5 3 => 2 3 5 5 8
 
 // O(M+N+M+N) => O(2*(M+N)) => O(M+N)
-function vatSort(...args) {
+function bucketSort(...args) {
   const arr = new Array(10).fill(0) // M
   const ret = []
   for (let i = 0; i < args.length; i++) {
@@ -19,4 +19,4 @@ function vatSort(...args) {
   return ret
 }
 
-console.log(vatSort(8, 5, 2, 5, 3))
+console.log(bucketSort(8, 5, 2, 5, 3))
