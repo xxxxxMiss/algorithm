@@ -19,4 +19,21 @@ function bucketSort(...args) {
   return ret
 }
 
-console.log(bucketSort(8, 5, 2, 5, 3))
+// console.log(bucketSort(8, 5, 2, 5, 3))
+
+const a = [2, 0, 2, 3, 0, 1]
+function getIndex(a, score) {
+  let sum = 0
+
+  for (let i = 0; i < score; i++) {
+    sum += a[i]
+  }
+  sum += score
+  const ret = [sum - 1]
+  for (let i = 1; i < a[score]; i++) {
+    ret[i] = ret[i - 1] + 1
+  }
+  return ret
+}
+
+console.log(getIndex(a, 3))

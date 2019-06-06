@@ -24,8 +24,6 @@ class ArrayStack {
   pop() {
     if (this.count === 0) return
     this.count--
-    const val = this.items[this.count]
-    this.items.length--
-    return val
+    return this.items[this.count]
   }
 }
