@@ -37,8 +37,24 @@ const node3 = new TreeNode(
   new TreeNode('5', null, new TreeNode('5'))
 )
 
+const binaryTreeNode = new TreeNode(
+  33,
+  new TreeNode(
+    17,
+    new TreeNode(13, null, new TreeNode(16)),
+    new TreeNode(18, null, new TreeNode(25, new TreeNode(19), new TreeNode(27)))
+  ),
+  new TreeNode(
+    50,
+    new TreeNode(34),
+    new TreeNode(58, new TreeNode(51), new TreeNode(66))
+  )
+)
+
 module.exports = {
   node,
   node2,
-  node3
+  node3,
+  binaryTreeNode,
+  TreeNode
 }
