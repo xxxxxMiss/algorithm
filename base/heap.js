@@ -54,6 +54,7 @@ function removeMax(h) {
 
 function buildHeap(h) {
   const n = h.length - 1
+  // Note: i = Math.floor(n / 2)
   for (let i = Math.floor(n / 2); i >= 1; i--) {
     heapify(h, n, i)
   }
@@ -62,9 +63,11 @@ function buildHeap(h) {
   function heapify(heap, len, i) {
     while (true) {
       let maxPos = i
+      // Note: <= len
       if (2 * i <= len && heap[i] < heap[2 * i]) {
         maxPos = 2 * i
       }
+      // Note: <= len
       if (2 * i + 1 <= len && heap[maxPos] < heap[2 * i + 1]) {
         maxPos = 2 * i + 1
       }
