@@ -1,29 +1,38 @@
 // [](){}
 function isValid(s) {
-  let valid = true
-  const stack = []
   const map = {
-    '{': '}',
-    '[': ']',
-    '(': ')'
+    ')': '(',
+    '}': '{',
+    ']': '['
   }
-
+  const stack = []
+  const close = Object.keys(map)
   for (let i = 0; i < s.length; i++) {
-    let v = s[i]
-    if (['(', '[', '{'].indexOf(v) > -1) {
-      stack.push(v)
+    if (!close.includes(s[i])) {
+      stack.push(s[i])
     } else {
-      const left = stack.pop()
-      if (map[left] !== v) {
-        valid = false
+      const open = stack.pop()
+      if (open !== map[s[i]]) {
+        return false
       }
     }
   }
-
-  if (stack.length > 0) return false
-
-  return valid
+  return stack.length === 0
 }
 
-console.log(isValid('{[](){}}'))
-console.log(isValid('{[}'))
+// 代码虽然简洁，但是时间复杂度O(n^2 / 2)没有上面的好
+function isValidRe(s) {
+  let length
+  do {
+    length = s.length
+    s = s
+      .replace('{}', '')
+      .replace('[]', '')
+      .replace('()', '')
+  } while (length !== s.length)
+
+  return s.length === 0
+}
+
+console.log(isValidRe('{[](){}}'))
+console.log(isValidRe('{[}'))
