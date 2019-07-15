@@ -61,11 +61,27 @@ const binaryTreeNode1 = new TreeNode(
   new TreeNode(8, new TreeNode(7), new TreeNode(9))
 )
 
+/* 
+        镜像对称的树
+            1
+           /  \
+          4     4
+         / \   /  \
+        4   5  5   4
+*/
+
+const symmetricNode = new TreeNode(
+  '1',
+  new TreeNode('4', new TreeNode('4'), new TreeNode('5')),
+  new TreeNode('4', new TreeNode('5'), new TreeNode('4'))
+)
+
 module.exports = {
   node,
   node2,
   node3,
   binaryTreeNode,
   TreeNode,
-  binaryTreeNode1
+  binaryTreeNode1,
+  symmetricNode
 }

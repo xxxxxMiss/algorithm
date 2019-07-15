@@ -20,7 +20,8 @@ const {
   node2,
   node3,
   binaryTreeNode,
-  binaryTreeNode1
+  binaryTreeNode1,
+  symmetricNode
 } = require('../fixtures/tree-node')
 
 /* 时间复杂度：O(n)。递归函数 T(n) = 2 * T(n/2)+1
@@ -172,4 +173,4 @@ function levelOrderx(root) {
   }
   return traversal(root)
 }
-console.log(levelOrderx(node3))
+// console.log(levelOrderx(node3))

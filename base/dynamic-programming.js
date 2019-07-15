@@ -155,3 +155,60 @@ function fiboy(n) {
   return allWays
 }
 console.log('y: ', fiboy(5))
+
+/* 
+  有一个n * n的矩阵，从左上角走到右下角的最短距离
+*/
+const matrix = [[1, 3, 5, 9], [2, 1, 3, 4], [5, 2, 6, 7], [6, 8, 4, 3]]
+
+// 递归加“备忘录”(这种形式类似将整个递归的过程倒过来看)
+const n = matrix.length
+const memo = new Array(n)
+for (let i = 0; i < n; i++) {
+  memo[i] = []
+}
+function minDistDPx(i, j) {
+  if (i === 0 && j === 0) return matrix[i][j]
+
+  if (memo[i][j] > 0) return memo[i][j]
+
+  let minLeft = Infinity
+  if (j - 1 >= 0) {
+    minLeft = minDistDPx(i, j - 1)
+  }
+  let minUp = Infinity
+  if (i - 1 >= 0) {
+    minUp = minDistDPx(i - 1, j)
+  }
+  const currentMin = matrix[i][j] + Math.min(minLeft, minUp)
+  memo[i][j] = currentMin
+  return currentMin
+}
+console.log('minDistDPx: ', minDistDPx(n - 1, n - 1))
+
+// 动态规划第一种解法：状态转移表
+function minDistDP(matrix) {
+  const n = matrix.length
+  const state = []
+  let sumx = 0
+  let sumy = 0
+  // 初始化第一行,第一列数据
+  for (let i = 0; i < n; i++) {
+    const row = []
+    sumy += matrix[i][0]
+    row[0] = sumy
+    state.push(row)
+    sumx += matrix[0][i]
+    state[0][i] = sumx
+  }
+
+  for (let i = 1; i < n; i++) {
+    for (let j = 1; j < n; j++) {
+      const down = state[i][j - 1] + matrix[i][j]
+      const right = state[i - 1][j] + matrix[i][j]
+      state[i][j] = Math.min(down, right)
+    }
+  }
+  return state[n - 1][n - 1]
+}
+console.log(minDistDP(matrix))
