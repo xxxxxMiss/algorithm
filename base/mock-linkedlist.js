@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class LinkedList {
+export default class LinkedList {
   constructor() {
     // 哨兵节点
     this.head = new Node('head')

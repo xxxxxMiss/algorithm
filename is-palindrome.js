@@ -27,4 +27,4 @@ function isPalindrome(str) {
   }
 }
 
-isPalindrome('ahah')
+isPalindrome('noon')

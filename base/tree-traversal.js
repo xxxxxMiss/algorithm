@@ -21,7 +21,7 @@ const {
   node3,
   binaryTreeNode,
   binaryTreeNode1,
-  symmetricNode
+  symmetricNode,
 } = require('../fixtures/tree-node')
 
 /* 时间复杂度：O(n)。递归函数 T(n) = 2 * T(n/2)+1
@@ -34,13 +34,13 @@ function inRecursionTaversal(root) {
   }
 
   let ret = []
-  ret = ret.concat(inRecursionTaversal(root.left, ret))
+  ret = ret.concat(inRecursionTaversal(root.left))
   ret.push(root.val)
-  ret = ret.concat(inRecursionTaversal(root.right, ret))
+  ret = ret.concat(inRecursionTaversal(root.right))
   return ret
 }
 
-// console.log(inRecursionTaversal(node3))
+console.log(inRecursionTaversal(node3))
 
 /* 
 将节点左子树全部压栈
